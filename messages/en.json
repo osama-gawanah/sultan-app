@@ -78,5 +78,31 @@
           "description": "An advanced analytical system for understanding and managing stakeholder relationships and enhancing strategic communication"
         }
       ]
+    },
+    "HowItWorks": {
+      "title": "How It Works",
+      "subtitle": "Three simple steps",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Data and Knowledge Collection",
+          "description": "Connect internal systems and external environment, pull reports, analytics, notifications, and risks."
+        },
+        {
+          "number": "2",
+          "title": "Analytical Engine – Averroes Decision Engine",
+          "features": [
+            "Scenario simulation",
+            "Cause-effect analysis",
+            "Decision impact calculation",
+            "Confidence Score"
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Executive Decision Dashboard",
+          "description": "Ready recommendation + top 3 alternatives + risk analysis + cost/return."
+        }
+      ]
     }
   }

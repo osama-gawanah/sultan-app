@@ -12,6 +12,7 @@ import { AnimatedSection } from "@/components/animated-section"
 import { LeadershipSection } from "@/components/leadership"
 import { VideoProvider } from "@/components/video-context"
 import { ModulesSection } from "@/components/modules-section"
+import { HowItWorks } from "@/components/how-it-works"
 
 export default function LandingPage() {
   return (
@@ -29,6 +30,9 @@ export default function LandingPage() {
         </main>
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto px-6 mt-[411px] md:mt-[400px]" delay={0.1}>
           <SocialProof />
+        </AnimatedSection>
+        <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
+          <HowItWorks />
         </AnimatedSection>
         {/* <AnimatedSection id="features-section" className="relative z-10 max-w-[1320px] mx-auto mt-16" delay={0.2}>
           <BentoSection />
