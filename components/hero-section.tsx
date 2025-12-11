@@ -6,11 +6,9 @@ import { Header } from "./header"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { Play } from "lucide-react"
-import { useVideo } from "./video-context"
 
 export function HeroSection() {
   const t = useTranslations("HeroSection")
-  const { playVideo } = useVideo()
   return (
     <section
       className="border flex flex-col items-center text-center relative mx-auto md:rounded-2xl rounded-b-2xl overflow-hidden md:my-6 py-0 px-4
@@ -464,15 +462,6 @@ export function HeroSection() {
           size={"icon"}
           className="rounded-full shadow-lg ring-1 ring-white/10"
           aria-label={t("watchVideoButton")}
-          onClick={(e) => {
-            e.preventDefault()
-            playVideo()
-            // Scroll to video
-            const videoElement = document.querySelector("video")
-            if (videoElement) {
-              videoElement.scrollIntoView({ behavior: "smooth", block: "center" })
-            }
-          }}
         >
           <Play className="h-5 w-5" />
           <span className="sr-only">{t("watchVideoButton")}</span>

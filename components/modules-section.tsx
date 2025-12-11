@@ -2,7 +2,7 @@
 
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Target, Monitor, Brain, Radio, ShieldAlert, Users } from "lucide-react"
 import { Tooltip } from "./ui/tooltip-card"
@@ -36,6 +36,21 @@ export function ModulesSection() {
     const locale = useLocale()
     const [activeModule, setActiveModule] = useState(0)
     const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+    const [isMounted, setIsMounted] = useState(false)
+    const [containerWidth, setContainerWidth] = useState(1200)
+
+    // Only render particles after mount to avoid hydration mismatch
+    useEffect(() => {
+        setIsMounted(true)
+        setContainerWidth(typeof window !== "undefined" ? window.innerWidth : 1200)
+        
+        const handleResize = () => {
+            setContainerWidth(window.innerWidth)
+        }
+        
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
 
     const modules = t.raw("modules") as Array<{
         title: string
@@ -74,25 +89,35 @@ export function ModulesSection() {
                 />
 
                 {/* Floating Particles */}
-                {[...Array(20)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 rounded-full bg-primary/30"
-                        initial={{
-                            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1000),
-                            y: Math.random() * 800,
-                        }}
-                        animate={{
-                            y: [null, -100],
-                            opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                            duration: Math.random() * 3 + 2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            delay: Math.random() * 2,
-                        }}
-                    />
-                ))}
+                {isMounted && [...Array(20)].map((_, i) => {
+                    // Generate consistent random values per particle index
+                    // Using a simple seeded random function based on index for deterministic values
+                    const seed = i * 12345
+                    const random1 = ((seed * 9301 + 49297) % 233280) / 233280
+                    const random2 = ((seed * 9301 + 49297 + 1) % 233280) / 233280
+                    const random3 = ((seed * 9301 + 49297 + 2) % 233280) / 233280
+                    const random4 = ((seed * 9301 + 49297 + 3) % 233280) / 233280
+                    
+                    return (
+                        <motion.div
+                            key={i}
+                            className="absolute w-1 h-1 rounded-full bg-primary/30"
+                            initial={{
+                                x: random1 * containerWidth,
+                                y: random2 * 800,
+                            }}
+                            animate={{
+                                y: [null, -100],
+                                opacity: [0, 1, 0],
+                            }}
+                            transition={{
+                                duration: random3 * 3 + 2,
+                                repeat: Number.POSITIVE_INFINITY,
+                                delay: random4 * 2,
+                            }}
+                        />
+                    )
+                })}
             </div>
 
             {/* Header */}
