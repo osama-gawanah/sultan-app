@@ -22,18 +22,22 @@
       "leaders": [
         {
           "name": "Dr. Sultan Saud Al-Sajjan",
+          "img":"/sultan.jpg",
           "role": "Chairman of the Board and CEO"
         },
         {
           "name": "Eng. Hussein Ahmed Kattab",
+          "img":"/حسين.jpeg",
           "role": "Chief Technology Officer"
         },
         {
           "name": "Eng. Ahmed Hussein Kattab",
+          "img":"/sultan.jpg",
           "role": "Chief Programmer"
         },
         {
           "name": "Mr. Ammar Abdullah Al-Shuaibi",
+          "img":"/ammar.jpg",
           "role": "Legal Advisor"
         }
       ]

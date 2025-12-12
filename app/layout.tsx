@@ -20,10 +20,10 @@ export default async function RootLayout({
   const messages = await getMessages();
 
 
-  let locale = "ar";
+  let locale = "en";
   try {
     const cookieStore = await cookies();
-    locale = cookieStore.get("NEXT_LOCALE")?.value || "ar";
+    locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
   } catch (error) {
     // During static generation, cookies are not available
     console.log("Using default locale during static generation");

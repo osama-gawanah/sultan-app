@@ -7,10 +7,10 @@ import { useRef } from "react"
 
 export function LeadershipSection() {
     const t = useTranslations("LeadershipSection")
-    const leaders = t.raw("leaders") as Array<{ name: string; role: string }>
+    const leaders = t.raw("leaders") as Array<{ name: string; role: string, img: string }>
     const containerRef = useRef(null)
     const isInView = useInView(containerRef, { once: true, amount: 0.2 })
-    
+
     return (
         <section className="relative w-full px-5 py-20 md:py-32  flex justify-center items-center ">
             {/* Decorative Background Elements */}
@@ -41,7 +41,7 @@ export function LeadershipSection() {
                     </motion.p>
                 </div>
 
-              
+
 
                 {/* Leadership Grid - Premium Card Design */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -62,7 +62,7 @@ export function LeadershipSection() {
                                 {/* Image Section */}
                                 <div className="relative w-full aspect-[3/4] overflow-hidden">
                                     <Image
-                                        src={"/placeholder.svg"}
+                                        src={leader.img}
                                         alt={leader.name}
                                         fill
                                         className="object-cover transition-all duration-700 group-hover:scale-110"
@@ -82,7 +82,7 @@ export function LeadershipSection() {
                                 {/* Content Overlay */}
                                 <div className="absolute inset-x-0 bottom-0 p-6 space-y-3">
                                     {/* Title - Name */}
-                                    <p className="text-lg text-gray-900 font-light tracking-wide uppercase">{leader.name}</p>
+                                    <p className="text-lg text-white tracking-wide uppercase">{leader.name}</p>
 
                                     {/* Decorative Line */}
                                     <div className="pt-2">

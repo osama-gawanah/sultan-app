@@ -1,5 +1,4 @@
 import { HeroSection } from "@/components/hero-section"
-import { DashboardPreview } from "@/components/dashboard-preview"
 import { SocialProof } from "@/components/social-proof"
 import { BentoSection } from "@/components/bento-section"
 import { LargeTestimonial } from "@/components/large-testimonial"
@@ -13,7 +12,6 @@ import { LeadershipSection } from "@/components/leadership"
 import { VideoProvider } from "@/components/video-context"
 import { ModulesSection } from "@/components/modules-section"
 import { HowItWorks } from "@/components/how-it-works"
-import { DashboardPreview2 } from "@/components/dashboard-preview copy"
 import { WhySultanAverroes } from "@/components/why-sultan-averroes"
 
 export default function LandingPage() {
@@ -21,16 +19,20 @@ export default function LandingPage() {
     <VideoProvider>
       <div className="min-h-screen bg-background relative overflow-hidden pb-0">
       <div className="relative z-10">
-        <main className="mx-auto relative md:px-4">
+        <main className="mx-auto relative">
           <HeroSection />
-          <div className="absolute bottom-[-150px] md:bottom-[-400px] left-1/2 transform -translate-x-1/2 z-30">
+          {/* <div className="absolute bottom-[-150px] md:bottom-[-400px] left-1/2 transform -translate-x-1/2 z-30">
             <AnimatedSection>
               <DashboardPreview />
             </AnimatedSection>
-          </div>
+          </div> */}
         </main>
+
+        <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
+          <ModulesSection />
+        </AnimatedSection>
      
-        <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto px-6 mt-[411px] md:mt-[400px]" delay={0.1}>
+        <AnimatedSection className="relative z-10" delay={0.1}>
           <SocialProof />
         </AnimatedSection>
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
@@ -39,9 +41,7 @@ export default function LandingPage() {
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
           <WhySultanAverroes />
         </AnimatedSection>
-        <AnimatedSection>
-          <DashboardPreview2 />
-        </AnimatedSection>
+        
         {/* <AnimatedSection id="features-section" className="relative z-10 max-w-[1320px] mx-auto mt-16" delay={0.2}>
           <BentoSection />
         </AnimatedSection> */}
@@ -58,9 +58,7 @@ export default function LandingPage() {
         {/* <AnimatedSection id="faq-section" className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
           <FAQSection />
         </AnimatedSection> */}
-        <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
-          <ModulesSection />
-        </AnimatedSection>
+      
         <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto mt-8 md:mt-16" delay={0.2}>
           <LeadershipSection />
         </AnimatedSection>

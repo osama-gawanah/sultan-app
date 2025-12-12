@@ -2,97 +2,37 @@
 
 import { Twitter, Github, Linkedin } from "lucide-react"
 import Image from "next/image"
-import { useTranslations, useLocale } from "next-intl"
+import { useLocale } from "next-intl"
 import { cn } from "@/lib/utils"
 
 export function FooterSection() {
-  const t = useTranslations("FooterSection")
   const locale = useLocale()
   const isRtl = locale === "ar"
+  const currentYear = new Date().getFullYear()
   return (
-    <footer className="w-full max-w-[1320px] mx-auto px-5 flex flex-col md:flex-row justify-between items-start gap-8 md:gap-0 py-10 md:py-[70px]">
-      {/* Left Section: Logo, Description, Social Links */}
-      <div className="flex flex-col justify-start items-start gap-8 p-4 md:p-8 -mt-6">
-        <div className={cn("flex gap-3",isRtl ? "-mr-6":"-ml-6")}>
-          <Image src="/logo-sultan.png" alt="Pointer Logo" width={140} height={140} />
+    <footer className="w-full mx-auto px-5 flex flex-col gap-6 py-10">
+      <div className="flex flex-row items-center justify-between gap-6">
+        <div className={cn("flex gap-3", isRtl ? "-mr-6" : "-ml-6")}>
+          <Image src="/logo-sultan.png" alt="Sultan Logo" width={140} height={140} />
         </div>
-        <p className="text-foreground/90 text-sm font-medium leading-[18px] -mt-10 max-w-[500px]">
-          {t("description")}
-        </p>
-        <div className="flex justify-start items-start gap-3">
-          <a href="#" aria-label="Twitter" className="w-4 h-4 flex items-center justify-center">
-            <Twitter className="w-full h-full text-muted-foreground" />
+
+        <div className="flex justify-center items-center gap-4">
+          <a href="#" aria-label="Twitter" className="w-5 h-5 flex items-center justify-center hover:text-foreground transition-colors">
+            <Twitter className="w-full h-full text-muted-foreground hover:text-foreground" />
           </a>
-          <a href="#" aria-label="GitHub" className="w-4 h-4 flex items-center justify-center">
-            <Github className="w-full h-full text-muted-foreground" />
+          <a href="#" aria-label="GitHub" className="w-5 h-5 flex items-center justify-center hover:text-foreground transition-colors">
+            <Github className="w-full h-full text-muted-foreground hover:text-foreground" />
           </a>
-          <a href="#" aria-label="LinkedIn" className="w-4 h-4 flex items-center justify-center">
-            <Linkedin className="w-full h-full text-muted-foreground" />
+          <a href="#" aria-label="LinkedIn" className="w-5 h-5 flex items-center justify-center hover:text-foreground transition-colors">
+            <Linkedin className="w-full h-full text-muted-foreground hover:text-foreground" />
           </a>
         </div>
       </div>
-      {/* Right Section: Product, Company, Resources */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 p-4 md:p-8 w-full md:w-auto">
-        <div className="flex flex-col justify-start items-start gap-3">
-          <h3 className="text-muted-foreground text-sm font-medium leading-5">Product</h3>
-          <div className="flex flex-col justify-end items-start gap-2">
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Features
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Pricing
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Integrations
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Real-time Previews
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Multi-Agent Coding
-            </a>
-          </div>
-        </div>
-        <div className="flex flex-col justify-start items-start gap-3">
-          <h3 className="text-muted-foreground text-sm font-medium leading-5">Company</h3>
-          <div className="flex flex-col justify-center items-start gap-2">
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              About us
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Our team
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Careers
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Brand
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Contact
-            </a>
-          </div>
-        </div>
-        <div className="flex flex-col justify-start items-start gap-3">
-          <h3 className="text-muted-foreground text-sm font-medium leading-5">Resources</h3>
-          <div className="flex flex-col justify-center items-start gap-2">
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Terms of use
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              API Reference
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Documentation
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Community
-            </a>
-            <a href="#" className="text-foreground text-sm font-normal leading-5 hover:underline">
-              Support
-            </a>
-          </div>
-        </div>
+      
+      <div className="flex justify-center items-center">
+        <p className="text-sm text-muted-foreground">
+          © {currentYear} Sultan. All rights reserved.
+        </p>
       </div>
     </footer>
   )

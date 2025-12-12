@@ -6,14 +6,15 @@ import { Header } from "./header"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { Play } from "lucide-react"
+import { DashboardPreview } from "./dashboard-preview"
 
 export function HeroSection() {
   const t = useTranslations("HeroSection")
 
   return (
     <section
-      className="border flex flex-col items-center text-center relative mx-auto md:rounded-2xl rounded-b-2xl overflow-hidden md:my-6 py-0 px-4
-         w-full h-[600px] md:h-[600px] lg:h-[810px] md:px-0"
+      className="border flex flex-col items-center text-center relative mx-auto overflow-hidden md:my-6 py-0
+         w-full h-[600px] md:h-[600px] lg:h-[750px] md:px-0"
     >
       {/* Optimized Background - CSS for grid, minimal SVG for overlays */}
       <div className="absolute inset-0 z-0">
@@ -141,35 +142,16 @@ export function HeroSection() {
       </div>
 
       {/* Header positioned at top of hero container */}
-      <div className="absolute top-0 left-0 right-0 z-20">
+      <div className="absolute -top-4 left-0 right-0 z-20">
         <Header />
       </div>
 
-      <div className="relative z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 max-w-md md:max-w-[500px] lg:max-w-[1200px] mt-32 md:mt-[120px] lg:mt-[160px] px-4">
-        <h1 className="text-foreground text-2xl md:text-4xl lg:text-6xl font-semibold leading-tight">
-          {t("title")}
-        </h1>
-        <p className="text-muted-foreground text-sm md:text-base lg:text-lg font-medium leading-relaxed max-w-lg mx-auto">
-          {t("subtitle")}
-        </p>
+      <div className="relative w-full z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 mt-36 md:mt-[120px]">
+      
+        <DashboardPreview />
       </div>
 
-      <div className="relative z-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
-        <Link href="" rel="noopener noreferrer">
-          <Button className="bg-blue-600 text-white hover:bg-blue-700 px-8 py-3 rounded-full font-medium text-base shadow-lg ring-1 ring-white/10">
-            {t("startButton")}
-          </Button>
-        </Link>
-        <Button
-          variant="outline"
-          size={"icon"}
-          className="rounded-full shadow-lg ring-1 ring-blue-600/30 border-blue-600/50 hover:bg-blue-600/10 hover:border-blue-600"
-          aria-label={t("watchVideoButton")}
-        >
-          <Play className="h-5 w-5 text-blue-600" />
-          <span className="sr-only">{t("watchVideoButton")}</span>
-        </Button>
-      </div>
+
     </section>
   )
 }

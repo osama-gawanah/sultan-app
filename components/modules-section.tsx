@@ -23,12 +23,12 @@ const moduleColors = [
 // Calculated for a circle with radius 250px (matching orbital ring)
 // Starting from top (angle 0 = top), using: x = r * sin(angle), y = -r * cos(angle)
 const hexPositions = [
-    { angle: 0, x: 0, y: -250 },          // Top: Decision Director
-    { angle: 60, x: 216.506, y: -125 },   // Top-right: Stakeholder Intelligence
-    { angle: 120, x: 216.506, y: 125 },   // Bottom-right: Media & Public Perception
-    { angle: 180, x: 0, y: 250 },         // Bottom: Risk Management Suite
-    { angle: 240, x: -216.506, y: 125 }, // Bottom-left: Organization's Intelligence
-    { angle: 300, x: -216.506, y: -125 }, // Top-left: (reserved for future)
+    { angle: 0, x: 0, y: -200 },          // Top: Decision Director
+    { angle: 60, x: 173.205, y: -100 },   // Top-right: Stakeholder Intelligence
+    { angle: 120, x: 173.205, y: 100 },   // Bottom-right: Media & Public Perception
+    { angle: 180, x: 0, y: 200 },         // Bottom: Risk Management Suite
+    { angle: 240, x: -173.205, y: 100 }, // Bottom-left: Organization's Intelligence
+    { angle: 300, x: -173.205, y: -100 }, // Top-left: (reserved for future)
 ]
 
 export function ModulesSection() {
@@ -175,7 +175,7 @@ export function ModulesSection() {
                         <motion.circle
                             cx="50%"
                             cy="50%"
-                            r="250"
+                            r="200"
                             fill="none"
                             stroke={modulesWithMetadata[activeModule].color}
                             strokeWidth="2"
@@ -189,7 +189,7 @@ export function ModulesSection() {
 
                     {/* Center Hub */}
                     <motion.div
-                        className="absolute z-20 w-64 h-64 rounded-full flex items-center justify-center"
+                        className="absolute z-20 w-48 h-48 rounded-full flex items-center justify-center"
                         style={{
                             background: `radial-gradient(circle, ${modulesWithMetadata[activeModule].color}20 0%, transparent 70%)`,
                         }}
@@ -199,7 +199,7 @@ export function ModulesSection() {
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.8, opacity: 0 }}
-                            className="w-44 h-44 rounded-full border-[3px] flex items-center justify-center backdrop-blur-xl"
+                            className="w-32 h-32 rounded-full border-[3px] flex items-center justify-center backdrop-blur-xl"
                             style={{
                                 borderColor: modulesWithMetadata[activeModule].color,
                                 background: `linear-gradient(135deg, ${modulesWithMetadata[activeModule].color}10, transparent)`,
@@ -207,7 +207,7 @@ export function ModulesSection() {
                         >
                             {(() => {
                                 const Icon = modulesWithMetadata[activeModule].icon
-                                return <Icon className="w-20 h-20" style={{ color: modulesWithMetadata[activeModule].color }} />
+                                return <Icon className="w-14 h-14" style={{ color: modulesWithMetadata[activeModule].color }} />
                             })()}
                         </motion.div>
 
