@@ -193,6 +193,7 @@ export function ModulesSection() {
                         style={{
                             background: `radial-gradient(circle, ${modulesWithMetadata[activeModule].color}20 0%, transparent 70%)`,
                         }}
+                        
                     >
                         <motion.div
                             key={activeModule}
