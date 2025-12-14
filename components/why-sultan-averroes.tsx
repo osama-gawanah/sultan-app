@@ -196,8 +196,9 @@ const VideoCard = ({ isRtl, index }: VideoCardProps) => {
             </Button>
 
           </div>
-          {media.map((item) => (
+          {media.map((item, index) => (
             <img
+              key={index}
               src={item.thumbnail}
               alt={item.alt}
               className="w-full h-full object-contain relative z-50"
@@ -274,7 +275,7 @@ export function WhySultanAverroes() {
               index={index}
             />
           ))}
-          <VideoCard isRtl={isRtl} index={featuresWithMetadata.length} />
+          <VideoCard key="video-card" isRtl={isRtl} index={featuresWithMetadata.length} />
         </ul>
 
       </div>
