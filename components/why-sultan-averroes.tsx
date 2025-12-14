@@ -1,9 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, Building2, TrendingUp, Globe, ShieldCheck } from "lucide-react"
+import { BookOpen, Building2, TrendingUp, Globe, ShieldCheck, Play } from "lucide-react"
 import { useTranslations, useLocale } from "next-intl"
 import { GlowingEffect } from "@/components/ui/glowing-effect"
+import { useState, useRef } from "react"
 
 const featureIcons = [BookOpen, Building2, TrendingUp, Globe, ShieldCheck]
 
@@ -121,6 +122,131 @@ const GridItem = ({ area, feature, isRtl, index }: GridItemProps) => {
   )
 }
 
+interface VideoCardProps {
+  isRtl: boolean
+  index: number
+}
+
+const VideoCard = ({ isRtl, index }: VideoCardProps) => {
+  const t = useTranslations("WhySultanAverroes")
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const videoData = t.raw("video") as {
+    url: string
+    title: string
+    description: string
+  }
+
+  const handlePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  return (
+    <motion.li
+      className="min-h-[20rem] w-full col-span-full"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+    >
+      <div
+        className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3 group"
+        style={{ borderColor: "#6366f130" }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <GlowingEffect
+          spread={40}
+          glow={true}
+          disabled={false}
+          proximity={64}
+          inactiveZone={0.01}
+        />
+        <div className="relative flex h-full flex-col overflow-hidden rounded-xl bg-white/80 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-2xl dark:shadow-[0px_0px_27px_0px_#2D2D2D]">
+          {/* Gradient Background Overlay */}
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
+            style={{
+              background: "linear-gradient(135deg, #6366f108, transparent)",
+            }}
+          />
+
+          <div className="relative flex flex-col h-full z-10">
+            {/* Header Section */}
+
+
+            {/* Video Section */}
+            <div className="relative flex-1 ">
+              <div className="relative w-full h-full min-h-[16rem] md:min-h-[20rem] rounded-xl overflow-hidden bg-gray-900">
+                {videoData.url ? (
+                  <>
+                    <video
+                      ref={videoRef}
+                      src={videoData.url}
+                      className="w-full h-full object-cover"
+                      loop
+                      playsInline
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                    />
+                    {/* Play/Pause Overlay */}
+                    <div
+                      className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors cursor-pointer"
+                      onClick={handlePlayPause}
+                    >
+                      <motion.div
+                        className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 flex items-center justify-center shadow-2xl"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {isPlaying ? (
+                          <div className="flex items-center gap-1">
+                            <div className="w-2 h-8 bg-gray-900 rounded-sm" />
+                            <div className="w-2 h-8 bg-gray-900 rounded-sm" />
+                          </div>
+                        ) : (
+                          <Play className="w-10 h-10 md:w-12 md:h-12 text-gray-900 ml-1" fill="currentColor" />
+                        )}
+                      </motion.div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-500/20 to-purple-500/20">
+                    <div className="text-center p-8">
+                      <Play className="w-16 h-16 md:w-20 md:h-20 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-500 dark:text-gray-400" dir={isRtl ? "rtl" : "ltr"}>
+                        {isRtl ? "سيتم إضافة رابط الفيديو قريباً" : "Video URL will be added soon"}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Corner Accent */}
+          <div
+            className="absolute top-0 rounded-full right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
+            style={{
+              background: "radial-gradient(circle, #6366f1, transparent)",
+              transform: "translate(30%, -30%)",
+            }}
+          />
+        </div>
+      </div>
+    </motion.li>
+  )
+}
+
 export function WhySultanAverroes() {
   const t = useTranslations("WhySultanAverroes")
   const locale = useLocale()
@@ -174,7 +300,7 @@ export function WhySultanAverroes() {
         </motion.div>
 
         {/* Features Grid */}
-        <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[50rem] xl:grid-rows-2">
+        <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-4 lg:gap-4 xl:max-h-[70rem] xl:grid-rows-3">
           {featuresWithMetadata.map((feature, index) => (
             <GridItem
               key={feature.number}
@@ -184,6 +310,7 @@ export function WhySultanAverroes() {
               index={index}
             />
           ))}
+          <VideoCard isRtl={isRtl} index={featuresWithMetadata.length} />
         </ul>
 
       </div>

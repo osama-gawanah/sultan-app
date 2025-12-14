@@ -6,6 +6,17 @@
       "en": "English",
       "ar": "العربية"
     },
+    "Header": {
+      "navItems": {
+        "home": "Home",
+        "whySultan": "Why Sultan",
+        "features": "Features",
+        "team": "Team",
+        "contactUs": "Contact Us"
+      },
+      "navigation": "Navigation",
+      "tryLimitedEdition": "Try limited edition"
+    },
     "HeroSection": {
       "title": "The new generation of decision-making systems for ministries and large organizations",
       "subtitle": "AI based on Ibn Rushd's wisdom and contemporary vision in building intelligent leadership systems based on logic, deep analysis, and data.",
@@ -138,6 +149,11 @@
           "title": "Highest Levels of Governance and Cybersecurity",
           "description": "Compliant with ISO, NCA, and government requirements."
         }
-      ]
+      ],
+      "video": {
+        "url": "",
+        "title": "See How Sultan Works",
+        "description": "Discover the Sultan Averroes platform through this demo video"
+      }
     }
   }

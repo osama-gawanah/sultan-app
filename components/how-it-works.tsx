@@ -2,11 +2,14 @@
 
 import React from "react";
 import { useId } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Database, Brain, LayoutDashboard } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function HowItWorks() {
     const t = useTranslations("HowItWorks");
+    const locale = useLocale();
+    const isRtl = locale === "ar";
     const steps = t.raw("steps") as Array<{
         number: string;
         title: string;
@@ -36,10 +39,10 @@ export function HowItWorks() {
                             className="relative bg-white/80 backdrop-blur-sm border border-gray-200 p-8 rounded-3xl overflow-hidden hover:border-blue-600/30 transition-all duration-300 group shadow-sm hover:shadow-md"
                         >
                             <Grid size={20} seed={index} />
-                            <span className="absolute top-12 right-20 w-6 text-9xl h-6 text-blue-600 font-bold opacity-10 flex items-center justify-center ">
+                            <span className={cn("absolute top-12  w-6 text-9xl h-6 text-blue-600 font-bold opacity-10 flex items-center justify-center ", isRtl ? "left-20" : "right-20")}>
                                 0{step.number}
                             </span>
-                         
+
                             {/* Decorative blue glow on hover */}
                             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/0 via-blue-600/0 to-blue-600/0 group-hover:from-blue-600/10 group-hover:via-blue-600/5 group-hover:to-blue-600/10 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500 -z-10" />
 
@@ -74,7 +77,7 @@ export function HowItWorks() {
                                             key={featureIndex}
                                             className="text-gray-600 text-sm md:text-base flex items-start"
                                         >
-                                            <span className="text-blue-600 mr-2 mt-1 font-bold">•</span>
+                                            <span className={cn("text-blue-600  font-bold", isRtl ? "ml-2 " : "mr-2 ")}>•</span>
                                             <span>{feature}</span>
                                         </li>
                                     ))}

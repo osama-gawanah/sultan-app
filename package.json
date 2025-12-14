@@ -49,6 +49,7 @@
     "embla-carousel-react": "8.5.1",
     "framer-motion": "latest",
     "input-otp": "1.4.1",
+    "lightbox.js-react": "^1.6.5",
     "lucide-react": "^0.454.0",
     "motion": "^12.23.26",
     "next": "15.2.6",

@@ -14,7 +14,7 @@ export function SocialProof() {
   }))
 
   return (
-    <section className=" py-24 overflow-hidden">
+    <section className=" py-24 overflow-hidden" dir="ltr">
       <h2 className="mx-4 mb-12 text-center text-2xl font-medium md:text-4xl">
         {t("title")}
       </h2>

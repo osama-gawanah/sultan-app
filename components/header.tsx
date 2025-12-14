@@ -8,13 +8,17 @@ import { Menu } from "lucide-react"
 import Link from "next/link" // Import Link for client-side navigation
 import LocaleSwitcher from "./locale-switcher"
 import Image from "next/image"
-import { AnimatedThemeToggler } from "./ui/animated-theme-toggler"
+import { useTranslations } from "next-intl"
 
 export function Header() {
+  const t = useTranslations("Header")
+  
   const navItems = [
-    { name: "Features", href: "#features-section" },
-    { name: "Pricing", href: "#pricing-section" },
-    { name: "Testimonials", href: "#testimonials-section" }, // Changed from Docs to Testimonials
+    { name: t("navItems.home"), href: "#home" },
+    { name: t("navItems.whySultan"), href: "#why-sultan" },
+    { name: t("navItems.features"), href: "#features" },
+    { name: t("navItems.team"), href: "#team" },
+    { name: t("navItems.contactUs"), href: "#contact" },
   ]
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -49,7 +53,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer" className="hidden md:block">
             <Button className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2 rounded-full font-medium shadow-sm">
-              Try limited edition
+              {t("tryLimitedEdition")}
             </Button>
           </Link>
           <LocaleSwitcher />
@@ -61,9 +65,7 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="bottom" className="bg-[#fff] border-t border-border text-foreground">
-              <SheetHeader>
-                <SheetTitle className="text-left text-xl font-semibold text-foreground">Navigation</SheetTitle>
-              </SheetHeader>
+            
               <nav className="flex flex-col gap-4 mt-6">
                 {navItems.map((item) => (
                   <Link
@@ -77,7 +79,7 @@ export function Header() {
                 ))}
                 <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer" className="w-full mt-4">
                   <Button className="bg-blue-600 text-white hover:bg-blue-700 px-6 py-2 rounded-full font-medium shadow-sm">
-                    Try limited edition
+                    {t("tryLimitedEdition")}
                   </Button>
                 </Link>
               </nav>
