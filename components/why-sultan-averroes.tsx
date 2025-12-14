@@ -265,7 +265,7 @@ export function WhySultanAverroes() {
         </motion.div>
 
         {/* Features Grid */}
-        <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-4 lg:gap-4 xl:max-h-[70rem] xl:grid-rows-3">
+        <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 lg:gap-4 xl:max-h-[70rem]">
           {featuresWithMetadata.map((feature, index) => (
             <GridItem
               key={feature.number}
