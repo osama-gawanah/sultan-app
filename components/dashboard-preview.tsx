@@ -304,7 +304,7 @@ export function DashboardPreview({ items = defaultItems, className }: DashboardP
             {items.map((item, index) => (
               <div
                 key={item.id}
-                className={cn('min-w-0 shrink-0 grow-0 basis-full md:basis-[90%]', isRtl ? 'pr-4' : 'pl-4')}
+                className={cn('min-w-0 shrink-0 grow-0 basis-full md:basis-[70%]', isRtl ? 'pr-4' : 'pl-4')}
               >
                 <motion.div
                   initial={{ scale: 0.9 }}
