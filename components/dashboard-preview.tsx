@@ -121,6 +121,7 @@ export function DashboardPreview({ items = defaultItems, className }: DashboardP
   const [videoStates, setVideoStates] = React.useState<Map<string, { isPlaying: boolean; isMuted: boolean }>>(
     new Map(items.filter(item => item.media.type === 'video').map(item => [item.id, { isPlaying: false, isMuted: true }]))
   )
+  const [isAnyVideoPlaying, setIsAnyVideoPlaying] = React.useState(false)
 
   const scrollPrev = React.useCallback(() => {
     if (emblaApi) {
@@ -138,15 +139,92 @@ export function DashboardPreview({ items = defaultItems, className }: DashboardP
     if (!emblaApi) {
       return
     }
-    setSelectedIndex(emblaApi.selectedScrollSnap())
+    const newIndex = emblaApi.selectedScrollSnap()
+    setSelectedIndex(newIndex)
     setCanScrollPrev(emblaApi.canScrollPrev())
     setCanScrollNext(emblaApi.canScrollNext())
-  }, [emblaApi])
+    
+    // Stop all videos except the one in the current slide (if it's a video)
+    setVideoStates(prev => {
+      const newStates = new Map(prev)
+      
+      items.forEach((item, index) => {
+        if (item.media.type === 'video') {
+          const video = videoRefs.current.get(item.id)
+          if (video) {
+            if (index !== newIndex) {
+              // Stop videos in all other slides
+              if (!video.paused) {
+                video.pause()
+              }
+              const currentState = newStates.get(item.id) || { isPlaying: false, isMuted: true }
+              newStates.set(item.id, { ...currentState, isPlaying: false })
+            } else {
+              // For current slide, update state based on actual video state
+              const isPlaying = !video.paused
+              const currentState = newStates.get(item.id) || { isPlaying: false, isMuted: true }
+              newStates.set(item.id, { ...currentState, isPlaying })
+            }
+          }
+        }
+      })
+      
+      return newStates
+    })
+    
+    // Update isAnyVideoPlaying based on current slide
+    const currentItem = items[newIndex]
+    if (currentItem?.media.type === 'video') {
+      const currentVideo = videoRefs.current.get(currentItem.id)
+      setIsAnyVideoPlaying(currentVideo ? !currentVideo.paused : false)
+    } else {
+      setIsAnyVideoPlaying(false)
+    }
+  }, [emblaApi, items])
 
   React.useEffect(() => {
     const videoItems = items.filter(item => item.media.type === 'video')
     setVideoStates(new Map(videoItems.map(item => [item.id, { isPlaying: false, isMuted: true }])))
   }, [items])
+
+  // Set up video event listeners to track play/pause state
+  React.useEffect(() => {
+    const cleanupFunctions: Array<() => void> = []
+    videoRefs.current.forEach((video, itemId) => {
+      const handlePlay = () => {
+        setIsAnyVideoPlaying(true)
+        setVideoStates(prev => {
+          const newStates = new Map(prev)
+          const currentState = newStates.get(itemId) || { isPlaying: false, isMuted: true }
+          newStates.set(itemId, { ...currentState, isPlaying: true })
+          return newStates
+        })
+      }
+      const handlePause = () => {
+        const isAnyOtherVideoPlaying = Array.from(videoRefs.current.entries()).some(
+          ([id, v]) => id !== itemId && !v.paused
+        )
+        setIsAnyVideoPlaying(isAnyOtherVideoPlaying)
+        setVideoStates(prev => {
+          const newStates = new Map(prev)
+          const currentState = newStates.get(itemId) || { isPlaying: false, isMuted: true }
+          newStates.set(itemId, { ...currentState, isPlaying: false })
+          return newStates
+        })
+      }
+      video.addEventListener('play', handlePlay)
+      video.addEventListener('pause', handlePause)
+      video.addEventListener('ended', handlePause)
+      cleanupFunctions.push(() => {
+        video.removeEventListener('play', handlePlay)
+        video.removeEventListener('pause', handlePause)
+        video.removeEventListener('ended', handlePause)
+      })
+    })
+    return () => {
+      cleanupFunctions.forEach(cleanup => cleanup())
+    }
+  }, [items, selectedIndex])
 
   React.useEffect(() => {
     if (!emblaApi) {
@@ -160,24 +238,26 @@ export function DashboardPreview({ items = defaultItems, className }: DashboardP
     }
   }, [emblaApi, onSelect])
 
-  // Auto-play functionality
+  // Auto-play functionality - pauses when any video is playing
   React.useEffect(() => {
     if (!emblaApi) {
       return
     }
 
     const autoplayInterval = setInterval(() => {
-      if (emblaApi.canScrollNext()) {
-        emblaApi.scrollNext()
-      } else {
-        emblaApi.scrollTo(0)
+      if (!isAnyVideoPlaying) {
+        if (emblaApi.canScrollNext()) {
+          emblaApi.scrollNext()
+        } else {
+          emblaApi.scrollTo(0)
+        }
       }
     }, 5000) 
 
     return () => {
       clearInterval(autoplayInterval)
     }
-  }, [emblaApi])
+  }, [emblaApi, isAnyVideoPlaying])
 
   const togglePlay = React.useCallback((itemId: string) => {
     const video = videoRefs.current.get(itemId)
@@ -191,8 +271,10 @@ export function DashboardPreview({ items = defaultItems, className }: DashboardP
       newStates.set(itemId, { ...currentState, isPlaying: newIsPlaying })
       if (newIsPlaying) {
         video.play()
+        setIsAnyVideoPlaying(true)
       } else {
         video.pause()
+        setIsAnyVideoPlaying(false)
       }
       return newStates
     })
