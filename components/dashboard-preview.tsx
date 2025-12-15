@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 type CarouselItem = {
   id: string
@@ -38,6 +38,7 @@ type DashboardPreviewProps = {
 
 
 export function DashboardPreview({ className }: DashboardPreviewProps) {
+  const t = useTranslations('DashboardPreview')
   const locale = useLocale()
   const isRtl = locale === 'ar'
   const items: CarouselItem[] = React.useMemo(
@@ -46,8 +47,8 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
         id: '1',
         content: (
           <div className={cn('text-white text-left', isRtl ? 'text-right' : 'text-left')}>
-            <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6'> الجيل الجديد من أنظمة اتخاذ القرار للوزارات والجهات الكبرى</h2>
-            <p className='text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-sm md:max-w-md'>ذكاء اصطناعي مستند إلى حكمة ابن رشد ورؤية معاصرة في بناء أنظمة ذكية لقيادة تعتمد على المنطق والتحليل العميق والبيانات.</p>
+            <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6'>{t('slide1Title')}</h2>
+            <p className='text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-sm md:max-w-md'>{t('slide1Description')}</p>
             {/* <div className='flex flex-col sm:flex-row gap-3 sm:gap-4'>
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-4'>
                 <Button className="text-white hover:bg-white/10 w-full sm:w-auto text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5" variant="outline">
@@ -68,16 +69,16 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
         content: (
           <div className={cn('text-white text-left', isRtl ? 'text-right' : 'text-left')}>
             <h2 className='text-xl sm:text-xl md:text-2xl lg:text-2xl font-bold mb-3 sm:mb-4 md:mb-6'>
-              نظام Sultan Averroes هو منصة ذكاء اصطناعي مبتكرة تدعم اتخاذ القرار للوزارات والشركات الكبرى والعالمية عبر محرك تحليل متقدم يجمع بين:
+              {t('slide2Title')}
             </h2>
             <ul className='list-disc pr-4 sm:pr-6 space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xl leading-relaxed'>
-              <li>منهج ابن رشد في التحليل والمنطق</li>
-              <li>تقنيات Decision Intelligence الحديثة</li>
-              <li>قرارات التنبؤ والتعلم العميق</li>
-              <li>فهم سياقي للبيانات والأنظمة Contextual Understanding</li>
+              <li>{t('slide2Point1')}</li>
+              <li>{t('slide2Point2')}</li>
+              <li>{t('slide2Point3')}</li>
+              <li>{t('slide2Point4')}</li>
             </ul>
             <p className='text-lg sm:text-xl md:text-2xl font-semibold text-white'>
-              النتيجة؟ قرارات أسرع، أدق، وأكثر وعياً بالمخاطر والفرص.
+              {t('slide2Result')}
             </p>
           </div>
         ),
@@ -92,23 +93,17 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
         content: (
           <div className={cn('text-white text-left', isRtl ? 'text-right' : 'text-left')}>
             <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-3xl font-bold mb-4 sm:mb-5 md:mb-6'>
-              الخصائص المميزة؟ — Why Sultan Averroes
+              {t('slide3Title')}
             </h2>
             <ol className='list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-3xl leading-relaxed'>
-              <li>دمج الفلسفة بالحوسبة.</li>
-              <li>المنهج الرشدي (Rational Reasoning) داخل الذكاء الاصطناعي.</li>
-              <li>
-                ذكاء اصطناعي خاص بالمنظمات الكبيرة؛ موجه للوزارات، الهيئات، الشركات المدرجة، مراكز الأزمات.
-                محاكاة مستقبلية للتنبؤ بالقرارات وتوقع سيناريوهات سلبية/إيجابية قبل وقوعها.
-              </li>
-              <li>هوية سعودية عالمية.</li>
-              <li>
-                تصميم، رؤية، قيادة مبنية على شخصية سلطان وعلى ابن رشد. أعلى مستويات الحوكمة والأمن السيبراني
-                ومتوافق مع ISO و NCA ومتطلبات الجهات الحكومية.
-              </li>
+              <li>{t('slide3Point1')}</li>
+              <li>{t('slide3Point2')}</li>
+              <li>{t('slide3Point3')}</li>
+              <li>{t('slide3Point4')}</li>
+              <li>{t('slide3Point5')}</li>
             </ol>
             <p className='text-lg sm:text-xl md:text-2xl font-semibold text-white'>
-              جاهز لقرارات أدق وأكثر وعياً بالمخاطر والفرص.
+              {t('slide3Summary')}
             </p>
           </div>
         ),
@@ -165,7 +160,7 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
       //   },
       // },
     ],
-    [isRtl],
+    [isRtl, t],
   )
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {

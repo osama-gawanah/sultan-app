@@ -2,6 +2,23 @@
     "HomePage": {
       "title": "Hello world!"
     },
+    "DashboardPreview": {
+      "slide1Title": "The next generation of decision-making systems for ministries and large organizations",
+      "slide1Description": "AI grounded in Ibn Rushd's wisdom and a modern vision for building intelligent leadership systems based on logic, deep analysis, and data.",
+      "slide2Title": "Sultan Averroes is an innovative AI platform that supports decision-making for ministries and leading global enterprises through an advanced analytics engine that combines:",
+      "slide2Point1": "Ibn Rushd's methodology in analysis and logic",
+      "slide2Point2": "Modern Decision Intelligence techniques",
+      "slide2Point3": "Predictive decisions and deep learning",
+      "slide2Point4": "Contextual understanding of data and systems",
+      "slide2Result": "The result? Faster, more accurate decisions with heightened awareness of risks and opportunities.",
+      "slide3Title": "Distinctive features — Why Sultan Averroes",
+      "slide3Point1": "Blending philosophy with computing.",
+      "slide3Point2": "Rational reasoning methodology embedded within artificial intelligence.",
+      "slide3Point3": "AI purpose-built for large organizations—designed for ministries, authorities, listed companies, and crisis centers. Future simulation to predict decisions and anticipate negative/positive scenarios before they occur.",
+      "slide3Point4": "A Saudi identity with global reach.",
+      "slide3Point5": "Design, vision, and leadership built on Sultan's character and Ibn Rushd. Highest levels of governance and cybersecurity, compliant with ISO, NCA, and government requirements.",
+      "slide3Summary": "Ready for decisions that are more accurate and more aware of risks and opportunities."
+    },
     "LocaleSwitcher": {
       "en": "English",
       "ar": "العربية"
