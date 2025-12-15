@@ -113,6 +113,32 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
           alt: 'Platform Demo',
         },
       },
+      {
+        id: '4',
+        content: (
+          <div className={cn('text-white text-left', isRtl ? 'text-right' : 'text-left')}>
+            <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-3xl font-bold mb-4 sm:mb-5 md:mb-6'>
+              {t('slide4Title')}
+            </h2>
+            <ol className='list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-3xl leading-relaxed'>
+              <li>{t('slide4Point1')}</li>
+              <li>{t('slide4Point2')}</li>
+              <li>{t('slide4Point3')}</li>
+              <li>{t('slide4Point4')}</li>
+              <li>{t('slide4Point5')}</li>
+            </ol>
+            <p className='text-lg sm:text-xl md:text-2xl font-semibold text-white'>
+              {t('slide4Summary')}
+            </p>
+          </div>
+        ),
+        media: {
+          type: 'image',
+          src: '/bg-slide-4.png',
+          alt: 'Platform Demo',
+        },
+      },
+
       // {
       //   id: '2',
       //   content: <div>
