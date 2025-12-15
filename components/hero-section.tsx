@@ -7,19 +7,21 @@ import Link from "next/link"
 import { useTranslations } from "next-intl"
 import { Play } from "lucide-react"
 import { DashboardPreview } from "./dashboard-preview"
-
+import { MatrixRain } from "./ui/matrix-rain"
 export function HeroSection() {
   const t = useTranslations("HeroSection")
 
   return (
     <section
-      className="border flex flex-col items-center text-center relative mx-auto overflow-hidden md:my-6 py-0
-         w-full h-[600px] md:h-[600px] lg:h-[750px] md:px-0"
+      className="border flex flex-col items-center text-center relative mx-auto overflow-hidden 
+         w-full h-[100dvh] lg:h-[750px]"
     >
+      <MatrixRain />
+
       {/* Optimized Background - CSS for grid, minimal SVG for overlays */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-10">
         {/* CSS Grid Pattern - Much faster than 770 SVG rectangles */}
-        <div 
+        <div
           className="absolute inset-0"
           style={{
             backgroundImage: `
@@ -45,7 +47,7 @@ export function HeroSection() {
             WebkitMaskImage: 'linear-gradient(to bottom right, transparent 0%, hsl(210, 80%, 50%) 100%)',
           }}
         />
-        
+
         {/* Simplified SVG - only 12 highlighted cells + gradients (was 770+ rectangles) */}
         <svg
           width="100%"
@@ -110,36 +112,36 @@ export function HeroSection() {
           />
 
           <defs>
-            <linearGradient 
-              id="gradient1" 
-              x1="1118.08" 
-              y1="-149.03" 
-              x2="1118.08" 
-              y2="1248.85" 
+            <linearGradient
+              id="gradient1"
+              x1="1118.08"
+              y1="-149.03"
+              x2="1118.08"
+              y2="1248.85"
               gradientUnits="userSpaceOnUse"
             >
               <stop stopColor="hsl(210, 100%, 70%)" />
               <stop offset="0.578125" stopColor="hsl(210, 100%, 65%)" />
               <stop offset="1" stopColor="hsl(210, 100%, 50%)" />
             </linearGradient>
-            <linearGradient 
-              id="gradient2" 
-              x1="1054.08" 
-              y1="-213.03" 
-              x2="1054.08" 
-              y2="1184.85" 
+            <linearGradient
+              id="gradient2"
+              x1="1054.08"
+              y1="-213.03"
+              x2="1054.08"
+              y2="1184.85"
               gradientUnits="userSpaceOnUse"
             >
               <stop stopColor="hsl(210, 100%, 70%)" />
               <stop offset="0.578125" stopColor="hsl(210, 100%, 65%)" />
               <stop offset="1" stopColor="hsl(210, 100%, 50%)" />
             </linearGradient>
-            <linearGradient 
-              id="gradient3" 
-              x1="1238.08" 
-              y1="-293.03" 
-              x2="1238.08" 
-              y2="1104.85" 
+            <linearGradient
+              id="gradient3"
+              x1="1238.08"
+              y1="-293.03"
+              x2="1238.08"
+              y2="1104.85"
               gradientUnits="userSpaceOnUse"
             >
               <stop stopColor="hsl(210, 100%, 70%)" />
@@ -167,8 +169,8 @@ export function HeroSection() {
         <Header />
       </div>
 
-      <div className="relative w-full z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 mt-36 md:mt-[120px]">
-      
+      <div className="relative w-full z-10 space-y-4 md:space-y-5 lg:space-y-6 mb-6 md:mb-7 lg:mb-9 mt-28 md:mt-[120px]">
+
         <DashboardPreview />
       </div>
 

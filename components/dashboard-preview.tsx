@@ -71,7 +71,7 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
             <h2 className='text-xl sm:text-xl md:text-2xl lg:text-2xl font-bold mb-3 sm:mb-4 md:mb-6'>
               {t('slide2Title')}
             </h2>
-            <ul className='list-disc pr-4 sm:pr-6 space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xl leading-relaxed'>
+            <ul className='list-disc list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xl leading-relaxed'>
               <li>{t('slide2Point1')}</li>
               <li>{t('slide2Point2')}</li>
               <li>{t('slide2Point3')}</li>
@@ -95,7 +95,7 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
             <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-3xl font-bold mb-4 sm:mb-5 md:mb-6'>
               {t('slide3Title')}
             </h2>
-            <ol className='list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-3xl leading-relaxed'>
+            <ol className='list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-2xl leading-relaxed'>
               <li>{t('slide3Point1')}</li>
               <li>{t('slide3Point2')}</li>
               <li>{t('slide3Point3')}</li>
@@ -120,7 +120,7 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
             <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-3xl font-bold mb-4 sm:mb-5 md:mb-6'>
               {t('slide4Title')}
             </h2>
-            <ol className='list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-3xl leading-relaxed'>
+            <ol className='list-decimal list-inside space-y-3 sm:space-y-4 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-2xl leading-relaxed'>
               <li>{t('slide4Point1')}</li>
               <li>{t('slide4Point2')}</li>
               <li>{t('slide4Point3')}</li>
@@ -148,7 +148,7 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
             <p className='text-sm sm:text-base md:text-lg text-white/90 mb-3 sm:mb-4'>
               {t('slide5Subtitle')}
             </p>
-            <div className={cn('grid gap-4 sm:gap-5 md:gap-6 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8', 'md:grid-cols-2')}>
+            <div className={cn(isRtl?"pl-4":"pr-4",'grid gap-4  sm:gap-5 md:gap-6 text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8', 'md:grid-cols-2')}>
               <div className='bg-white/5 border border-white/10 rounded-xl p-4 sm:p-5 h-full'>
                 <div className='font-semibold text-white mb-2'>{t('slide5Step1Title')}</div>
                 <p className='text-white/80 leading-relaxed'>{t('slide5Step1Description')}</p>
@@ -471,7 +471,7 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
                   className="relative rounded-[16px] md:rounded-[32px] overflow-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm"
                 >
                   <div className="absolute inset-0 z-20 bg-gray-900/50 pointer-events-none"></div>
-                  <div className="relative flex flex-col md:flex-row h-[400px] sm:h-[450px] md:h-[470px] lg:h-[500px]">
+                  <div className="relative flex flex-col md:flex-row h-[520px] sm:h-[500px] md:h-[520px] lg:h-[520px]">
 
 
 
