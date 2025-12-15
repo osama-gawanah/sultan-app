@@ -9,10 +9,12 @@ import Link from "next/link" // Import Link for client-side navigation
 import LocaleSwitcher from "./locale-switcher"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
+import { SlideshowLightbox } from "lightbox.js-react"
+import { useState } from "react"
 
 export function Header() {
   const t = useTranslations("Header")
-  
+
   const navItems = [
     { name: t("navItems.home"), href: "#home" },
     { name: t("navItems.whySultan"), href: "#why-sultan" },
@@ -20,18 +22,37 @@ export function Header() {
     { name: t("navItems.team"), href: "#team" },
     { name: t("navItems.contactUs"), href: "#contact" },
   ]
-
+  let [isOpen, setIsOpen] = useState(false); 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
+    if (href === "#why-sultan") {
+      setIsOpen(true)
+      return
+    }
     const targetId = href.substring(1) // Remove '#' from href
     const targetElement = document.getElementById(targetId)
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" })
     }
   }
-
+  const media = [
+    {
+      type: "htmlVideo",
+      videoSrc: "/vidoe.webm",
+      thumbnail: "/logo-sultan.png",
+      alt: "Poster for the Big Buck Bunny film, featuring the bunny character in a green field, along with a purple butterfly"
+    },
+  ]
   return (
     <header className="w-full px-6">
+      <SlideshowLightbox 
+        images={media} 
+        showThumbnails={false} 
+        open={isOpen} 
+        lightboxIdentifier="lbox1"
+        onClose={() =>{setIsOpen(false)}}>     
+      </SlideshowLightbox>
+
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
@@ -65,7 +86,7 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="bottom" className="bg-[#fff] border-t border-border text-foreground">
-            
+
               <nav className="flex flex-col gap-4 mt-6">
                 {navItems.map((item) => (
                   <Link
