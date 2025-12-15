@@ -34,7 +34,7 @@
       "navItems": {
         "home": "Home",
         "whySultan": "Why did the board choose Sultan Averos",
-        "features": "Features",
+        "features": "Core System",
         "team": "Team",
         "contactUs": "Contact Us"
       },
@@ -145,7 +145,7 @@
       ]
     },
     "WhySultanAverroes": {
-      "title": "Distinctive Features – Why Sultan Averroes?",
+      "title": "Why did the board choose Sultan Averroes?",
       "subtitle": "Five key advantages that set us apart",
       "features": [
         {

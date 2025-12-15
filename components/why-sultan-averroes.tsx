@@ -8,7 +8,7 @@ import { useState, useRef } from "react"
 import { SlideshowLightbox } from 'lightbox.js-react'
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
-
+import Image from "next/image"
 const featureIcons = [BookOpen, Building2, TrendingUp, Globe, ShieldCheck]
 
 const featureColors = [
@@ -162,19 +162,23 @@ const VideoCard = ({ isRtl, index }: VideoCardProps) => {
   ]
 
   return (
-    <motion.li
+    <motion.div
       className="min-h-[20rem] w-full col-span-full"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
     >
+   
       <div
-        className="relative h-full rounded-2xl border p-2 md:rounded-3xl md:p-3 group"
+        className="relative h-80 bg rounded-2xl border p-2 md:rounded-3xl md:p-3 group overflow-hidden"
         style={{ borderColor: "#6366f130" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
+           <div className=" absolute inset-0 w-full h-full">
+        <Image src="/bg-why.png" alt="Sultan Averroes" width={1000} height={1000} className="w-full h-full object-cover" />
+      </div>
         <GlowingEffect
           spread={40}
           glow={true}
@@ -208,7 +212,7 @@ const VideoCard = ({ isRtl, index }: VideoCardProps) => {
 
         </SlideshowLightbox>
       </div>
-    </motion.li>
+    </motion.div>
   )
 }
 
@@ -259,24 +263,12 @@ export function WhySultanAverroes() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
             {t("title")}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto" dir={isRtl ? "rtl" : "ltr"}>
-            {t("subtitle")}
-          </p>
+       
         </motion.div>
 
         {/* Features Grid */}
-        <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 lg:gap-4 xl:max-h-[70rem]">
-          {featuresWithMetadata.map((feature, index) => (
-            <GridItem
-              key={feature.number}
-              area={gridAreas[index] || ""}
-              feature={feature}
-              isRtl={isRtl}
-              index={index}
-            />
-          ))}
-          {/* <VideoCard key="video-card" isRtl={isRtl} index={featuresWithMetadata.length} /> */}
-        </ul>
+        <VideoCard key="video-card" isRtl={isRtl} index={featuresWithMetadata.length} />
+
 
       </div>
     </section>

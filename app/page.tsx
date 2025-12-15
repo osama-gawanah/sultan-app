@@ -21,15 +21,15 @@ export default function LandingPage() {
           </div> */}
           </main>
 
-          {/* <AnimatedSection id="why-sultan" className="relative z-10 max-w-[1320px] mx-auto mt-8 " delay={0.2}>
-            <WhySultanAverroes />
-          </AnimatedSection> */}
+     
 
           <AnimatedSection id="features" className="relative z-10 max-w-[1320px] mx-auto mt-8 " delay={0.2}>
             <ModulesSection />
           </AnimatedSection>
 
-
+          <AnimatedSection id="why-sultan" className="relative z-10 max-w-[1320px] mx-auto mt-8 " delay={0.2}>
+            <WhySultanAverroes />
+          </AnimatedSection>
 
           <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto " delay={0.2}>
             <HowItWorks />
