@@ -9,7 +9,8 @@ export function CTASection() {
   
   // Encode WhatsApp message for URL
   const whatsappMessage = encodeURIComponent(t("whatsappMessage"))
-  const whatsappUrl = `https://wa.me/?text=${whatsappMessage}`
+  const whatsappNumber = "966562993468" // +966562993468 without + sign
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
   return (
     <section className="w-full pt-20 md:pt-60 lg:pt-60 pb-10 md:pb-20 px-5 relative flex flex-col justify-center items-center overflow-visible">
       <div className="absolute inset-0 top-[-90px]">
