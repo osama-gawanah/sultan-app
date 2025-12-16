@@ -37,8 +37,9 @@ export function Header() {
   }
   const media = [
     {
-      type: "htmlVideo",
-      videoSrc: "/vidoe.webm",
+      type: "yt",
+      videoID :"QjN4Xi_UYBU",
+      videoSrc: "https://www.youtube.com/watch?v=QjN4Xi_UYBU&feature=youtu.be",
       thumbnail: "/logo-sultan.png",
       alt: "Poster for the Big Buck Bunny film, featuring the bunny character in a green field, along with a purple butterfly"
     },

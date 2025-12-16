@@ -46,9 +46,9 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
       {
         id: '1',
         content: (
-          <div className={cn('text-white text-left', isRtl ? 'text-right' : 'text-left')}>
+          <div className={cn('text-white', isRtl ? 'text-right' : 'text-left')}>
             <h2 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6'>{t('slide1Title')}</h2>
-            <p className='text-sm sm:text-base md:text-md text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-sm md:max-w-md'>{t('slide1Description')}</p>
+            <p className='text-sm sm:text-base md:text-2xl text-white/90 mb-4 sm:mb-6 md:mb-8 max-w-xs sm:max-w-sm md:max-w-md'>{t('slide1Description')}</p>
             {/* <div className='flex flex-col sm:flex-row gap-3 sm:gap-4'>
               <div className='flex flex-col sm:flex-row gap-3 sm:gap-4'>
                 <Button className="text-white hover:bg-white/10 w-full sm:w-auto text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-2.5" variant="outline">
@@ -175,52 +175,6 @@ export function DashboardPreview({ className }: DashboardPreviewProps) {
           alt: 'Platform Demo',
         },
       },
-      // {
-      //   id: '2',
-      //   content: <div>
-      //     <h2>Gemini Robotics</h2>
-      //     <p>Powering an era of physical agents to transform how robots actively understand their environments.</p>
-      //     <Button>Try in Google AI Studio</Button>
-      //     <Button>Learn more</Button>
-      //   </div>,
-      //   primaryButton: {
-      //     text: 'Try in Google AI Studio',
-      //     href: '#',
-      //   },
-      //   secondaryButton: {
-      //     text: 'Learn more',
-      //     href: '#',
-      //   },
-      //   media: {
-      //     type: 'video',
-      //     src: '/veo__veo-3__nyc.mp4',
-      //     // poster: '/unnamed.jpg',
-      //     alt: 'Gemini Robotics',
-      //   },
-      // },
-
-      // {
-      //   id: '3',
-      //   content: <div>
-      //     <h2>Next Generation Platform</h2>
-      //     <p>Experience the future of development with cutting-edge tools and seamless integration.</p>
-      //     <Button>Start Free Trial</Button>
-      //     <Button>View Demo</Button>
-      //   </div>,
-      //   primaryButton: {
-      //     text: 'Start Free Trial',
-      //     href: '#',
-      //   },
-      //   secondaryButton: {
-      //     text: 'View Demo',
-      //     href: '#',
-      //   },
-      //   media: {
-      //     type: "image",
-      //     src: '/unnamed.webp',
-      //     alt: 'Platform Demo',
-      //   },
-      // },
     ],
     [isRtl, t],
   )

@@ -11,7 +11,7 @@ export default function LocaleSwitcher() {
       items={[
         {
           value: 'en',
-          code: 'us',
+          code: 'gb',
           label: t('en')
         },
         {

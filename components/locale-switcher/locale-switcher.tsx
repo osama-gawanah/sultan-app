@@ -20,8 +20,9 @@ export default function LocaleSwitcherPopover({ defaultValue, items }: Props) {
     return locale === "ar" ? "en" : "ar";
   }
 
-  function getCurrentLocaleItem() {
-    return items.find((item) => item.value === locale) || items[0];
+  function getNextLocaleItem() {
+    const nextLocale = getNextLocale();
+    return items.find((item) => item.value === nextLocale) || items[0];
   }
 
   function handleToggleLocale() {
@@ -32,7 +33,7 @@ export default function LocaleSwitcherPopover({ defaultValue, items }: Props) {
     });
   }
 
-  const currentItem = getCurrentLocaleItem();
+  const nextItem = getNextLocaleItem();
 
   return (
 
@@ -43,7 +44,7 @@ export default function LocaleSwitcherPopover({ defaultValue, items }: Props) {
        size="icon">
       <ReactCountryFlag
         className="w-full h-full rounded-full text-4xl"
-        countryCode={currentItem.code}
+        countryCode={nextItem.code}
         svg
         cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
         cdnSuffix="svg"
