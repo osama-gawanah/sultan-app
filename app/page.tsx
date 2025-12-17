@@ -5,7 +5,6 @@ import { FooterSection } from "@/components/footer-section"
 import { AnimatedSection } from "@/components/animated-section"
 import { LeadershipSection } from "@/components/leadership"
 import { ModulesSection } from "@/components/modules-section"
-import { HowItWorks } from "@/components/how-it-works"
 import { WhySultanAverroes } from "@/components/why-sultan-averroes"
 
 export default function LandingPage() {
@@ -14,14 +13,7 @@ export default function LandingPage() {
         <div className="relative z-10">
           <main id="home" className="mx-auto relative">
             <HeroSection />
-            {/* <div className="absolute bottom-[-150px] md:bottom-[-400px] left-1/2 transform -translate-x-1/2 z-30">
-            <AnimatedSection>
-              <DashboardPreview />
-            </AnimatedSection>
-          </div> */}
           </main>
-
-     
 
           <AnimatedSection id="features" className="relative z-10 max-w-[1320px] mx-auto mt-8 " delay={0.2}>
             <ModulesSection />
@@ -30,11 +22,6 @@ export default function LandingPage() {
           <AnimatedSection id="why-sultan" className="relative z-10 max-w-[1320px] mx-auto mt-8 " delay={0.2}>
             <WhySultanAverroes />
           </AnimatedSection>
-
-          {/* <AnimatedSection className="relative z-10 max-w-[1320px] mx-auto " delay={0.2}>
-            <HowItWorks />
-          </AnimatedSection> */}
-
 
           <AnimatedSection className="relative z-10" id="partners" delay={0.1}>
             <SocialProof />
